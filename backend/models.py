@@ -3,7 +3,42 @@ from typing import Optional
 from pydantic import BaseModel, Field
 #from bson import ObjectId
 
+class Transaction(BaseModel):
+    dateMonth: int = Field(...)
+    dateDay: int = Field(...)
+    dateYear: int = Field(...)
+    amount : float = Field(...)
+    cod: str = Field(...)
+    type: str = Field(...)
+    
+    class config:
+        allow_population_by_field_name = True
+        artitrary_types_allowed = True
+        #json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "dateMonth": 7,
+                "dateDay": 4,
+                "dateYear": 2022,
+                "amount": 5.87,
+                "cod": "debit",
+                "type": "Coffee Shops"
+                }
+                }
+class Type(BaseModel):
+    type: str = Field(...)
 
+    class config:
+        allow_population_by_field_name = True
+        artitrary_types_allowed = True
+        #json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "type": "Coffee Shops"
+            }
+        }
+
+'''
 class Car(BaseModel):
     CarID: str = Field(...)
     BranchID: str = Field(...)
@@ -190,4 +225,4 @@ class Reservation(BaseModel):
                 "TotalCost": 100.00,
                 "Status": "Active"
             }
-        }
+        } '''
