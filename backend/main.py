@@ -1,7 +1,6 @@
 import os
 import uvicorn
 from fastapi import FastAPI
-from dotenv import load_dotenv
 from pymongo import MongoClient
 from fastapi.middleware.cors import CORSMiddleware
 from routers import router
