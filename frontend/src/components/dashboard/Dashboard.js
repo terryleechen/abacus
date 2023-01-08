@@ -44,7 +44,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>Dashboard</div>
+      <div style={{
+          fontSize: 20,
+          color: "#204c63",
+          paddingTop: "25px",
+          paddingBottom: "10px"
+        }}>
+          Dashboard
+      </div>
       <div
         style={{
           display: "flex",
@@ -56,20 +63,27 @@ const Dashboard = () => {
           sx={{
             width: "95%",
             height: 300,
-            backgroundColor: "#FFF",
+            backgroundColor: "#7b9aab",
             borderRadius: 5,
             boxShadow: 5,
             m: 2,
           }}
         >
-          <div style={{ textAlign: "left", padding: "10px" }}>
-            <div style={{ paddingBottom: "20px" }}>Overview</div>
-            <div>Salary</div>
-            <div>Rent</div>
-            <div>Groceries</div>
-            <div>Utilities</div>
-            <div>Miscellaneous</div>
-            <div style={{ paddingBottom: "10px" }}>
+          <div style={{ textAlign: "left", padding: "20px" }}>
+
+            <div style={{ 
+              paddingBottom: "20px",
+              fontSize: 18,
+              fontStyle: "bold",
+              color: "#FFF"
+            }}>Overview</div>
+
+            <div style={{ padding: "2px", color: "#FFF"}}>Salary</div>
+            <div style={{ padding: "2px", color: "#FFF"}}>Rent</div>
+            <div style={{ padding: "2px", color: "#FFF"}}>Groceries</div>
+            <div style={{ padding: "2px", color: "#FFF"}}>Utilities</div>
+            <div style={{ padding: "2px", color: "#FFF"}}>Miscellaneous</div>
+            <div style={{ paddingTop: "20px", paddingBottom: "10px" }}>
               <input type="file" accept=".csv" onChange={onFileChange} />
               <button onClick={onFileUpload}>Upload!</button>
             </div>

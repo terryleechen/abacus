@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router";
 import Dashboard from "./components/dashboard/Dashboard.js";
-import InOut from "./components/dashboard/InOut.js";
+import Analytics from "./components/Analytics";
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/InOut" element={<InOut />} />
+        <Route path="/Analytics" element={<Analytics />} />
       </Routes>
     </div>
   );
