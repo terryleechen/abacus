@@ -86,7 +86,7 @@ const Dashboard = () => {
             <div style={{ padding: "2px", color: "#FFF"}}>Groceries</div>
             <div style={{ padding: "2px", color: "#FFF"}}>Utilities</div>
             <div style={{ padding: "2px", color: "#FFF"}}>Miscellaneous</div>
-            <div style={{ paddingTop: "20px", paddingBottom: "10px" }}>
+            <div style={{ paddingTop: "20px", paddingBottom: "10px" , color: "#FFF"}}>
               <input type="file" accept=".csv" onChange={onFileChange} />
               <button onClick={onFileUpload}>Upload!</button>
             </div>
