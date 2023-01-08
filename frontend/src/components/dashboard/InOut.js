@@ -52,16 +52,18 @@ const InOut = ({data}) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          paddingLeft: "100px",
+          paddingRight: "100px",
           paddingTop: "50px",
         }}
       >
         <BarChart width={400} height={250} data={graph}>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3"/>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="value" fill="#204c63" />
         </BarChart>
       </div>
     );
@@ -76,17 +78,23 @@ const InOut = ({data}) => {
           justifyContent: "center",
         }}
       >
-        <Box
+      <Box
           sx={{
             width: "95%",
             height: 500,
-            backgroundColor: "#FFF",
+            backgroundColor: "#7b9aab",
             borderRadius: 5,
             boxShadow: 5,
             m: 2,
           }}
         >
-        <div style={{marginTop:"20px"}}>Monthly Cashflow</div>
+        <div style={{
+              paddingTop: "20px",
+              paddingBottom: "10px",
+              fontSize: 24,
+              fontWeight: "800",
+              color: "#FFF"
+              }}>Monthly Cashflow</div>
         
           {graph.length > 0 ? createGraph() : null}
         </Box>
