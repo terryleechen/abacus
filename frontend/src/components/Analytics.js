@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import InOut from "./dashboard/InOut.js";
 import MostSpent from "./dashboard/MostSpent.js";
+import DailySpent from "./dashboard/DailySpent.js";
 
 const Analytics = () => {
 
@@ -12,17 +13,7 @@ const Analytics = () => {
 
   return (
     <>
-      <div style={{backgroundColor: "#dceef7", height: "150vh"}}>
-      <div style={{
-          fontSize: 40,
-          color: "#204c63",
-          paddingTop: "15px",
-          paddingBottom: "5px",
-          paddingRight: "20px",
-          fontWeight: "800",
-        }}>
-          Analytics
-          </div>
+      <div>Analytics</div>
       <div
         style={{
           display: "flex",
@@ -33,14 +24,13 @@ const Analytics = () => {
         <div>
           <InOut data={data}/>
           <MostSpent data={data}/>
+          <DailySpent data={data}/>
           <Link to="/">
             <div
               style={{
                 marginTop: "40px",
                 padding: "10px",
                 border: "solid",
-                color: "#204c63",
-                fontWeight: "800",
                 borderRadius: "20px",
                 width: "60px",
               }}
@@ -57,7 +47,6 @@ const Analytics = () => {
         </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
