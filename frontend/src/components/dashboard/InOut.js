@@ -58,12 +58,12 @@ const InOut = ({data}) => {
         }}
       >
         <BarChart width={400} height={250} data={graph}>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3"/>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="value" fill="#204c63" />
         </BarChart>
       </div>
     );

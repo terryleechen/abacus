@@ -12,7 +12,7 @@ const Analytics = () => {
 
   return (
     <>
-      <div style={{backgroundColor: "#dceef7", height: "100vh"}}>
+      <div style={{backgroundColor: "#dceef7", height: "150vh"}}>
       <div style={{
           fontSize: 40,
           color: "#204c63",
@@ -39,6 +39,8 @@ const Analytics = () => {
                 marginTop: "40px",
                 padding: "10px",
                 border: "solid",
+                color: "#204c63",
+                fontWeight: "800",
                 borderRadius: "20px",
                 width: "60px",
               }}
