@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import {
   BarChart,
   CartesianGrid,
@@ -15,6 +19,7 @@ const InOut = ({data}) => {
   const [moneyIn, setMoneyIn] = useState(0);
   const [moneyOut, setMoneyOut] = useState(0);
   const [year, setYear] = useState("");
+  const [dropDown, setDropDown] = useState([]);
 
   //console.log(data);
 
@@ -86,8 +91,22 @@ const InOut = ({data}) => {
             m: 2,
           }}
         >
+        {(dropDown.length > 0) && <div>
+        <FormControl fullWidth>
+        <InputLabel >Year</InputLabel>
+        <Select
+          value={year}
+          label="Year"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+        </div>}
         <div style={{marginTop:"20px"}}>Monthly Cashflow</div>
-        
+
           {graph.length > 0 ? createGraph() : null}
         </Box>
       </div>
