@@ -50,7 +50,8 @@ const Dashboard = () => {
           color: "#204c63",
           paddingTop: "15px",
           paddingBottom: "5px",
-          paddingRight: "20px"
+          paddingRight: "20px",
+          fontWeight: "800",
         }}>
           Dashboard
       </div>
@@ -74,9 +75,9 @@ const Dashboard = () => {
           <div style={{ textAlign: "left", padding: "20px" }}>
 
             <div style={{ 
-              paddingBottom: "20px",
-              fontSize: 18,
-              fontStyle: "bold",
+              paddingBottom: "10px",
+              fontSize: 24,
+              fontWeight: "800",
               color: "#FFF"
             }}>Overview</div>
 
@@ -93,14 +94,16 @@ const Dashboard = () => {
               <Link to="Analytics" state={{data: json}}>
                 <div
                   style={{
-                    marginTop: "40px",
+                    marginTop: "10px",
                     padding: "10px",
                     border: "solid",
+                    color: "#204c63",
+                    fontWeight: "800",
                     borderRadius: "20px",
-                    width: "60px",
+                    width: "90px",
                   }}
                 >
-                  Analytics
+                  ANALYTICS
                 </div>
               </Link>
             )}
