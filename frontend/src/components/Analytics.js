@@ -11,7 +11,17 @@ const Analytics = () => {
 
   return (
     <>
-      <div>Analytics</div>
+      <div style={{backgroundColor: "#dceef7", height: "100vh"}}>
+      <div style={{
+          fontSize: 40,
+          color: "#204c63",
+          paddingTop: "15px",
+          paddingBottom: "5px",
+          paddingRight: "20px",
+          fontWeight: "800",
+        }}>
+          Analytics
+          </div>
       <div
         style={{
           display: "flex",
@@ -37,6 +47,7 @@ const Analytics = () => {
           </Link>
         </div>
       </div>
+    </div>
     </>
   );
 };
