@@ -74,7 +74,7 @@ const Dashboard = () => {
               <button onClick={onFileUpload}>Upload!</button>
             </div>
             {json && (
-              <Link to="InOut" state={{data: json}}>
+              <Link to="Analytics" state={{data: json}}>
                 <div
                   style={{
                     marginTop: "40px",
