@@ -18,10 +18,11 @@ const MostSpent = ({data}) => {
     useEffect(() => {}, [data]);
 
     for(let line of data){
+      const stuff = line.type.toLowerCase();
         if(line.transaction === "debit"){
-            types.some((type) => type.name === line.type) 
-            ? types.find((type) => type.name === line.type).value += parseInt(line.value) 
-            : types.push({name: line.type, value: parseInt(line.value)});
+            types.some((type) => type.name === stuff) 
+            ? types.find((type) => type.name === stuff).value += parseInt(line.value) 
+            : types.push({name: stuff, value: parseInt(line.value)});
         }
     }
 
@@ -66,7 +67,7 @@ const MostSpent = ({data}) => {
                     paddingTop: "50px",
         }}>
 
-        <BarChart width={400} height={250} data={graph}>
+        <BarChart width={1000} height={250} data={graph}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
