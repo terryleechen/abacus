@@ -14,6 +14,7 @@ import {
     Bar,
   } from "recharts";
 
+var dateChosen = "";
 
 const MostSpent = ({data}) => {
     const [types, setTypes] = useState([]);
@@ -36,22 +37,31 @@ const MostSpent = ({data}) => {
       setDropDown(options)
     }, [data])
 
-    
+    const handleChange = (e) => {
+      setMonth(e.target.value);
+      //console.log(e.target.value);
+      dateChosen = e.target.value;
+    };
+
+    const monthChosen = dateChosen.split("/")[0];
     for(let line of data){
+      const date2 = line.date;
+      const tempMonth = date2.split("/")[0];
+      if (tempMonth === monthChosen){
         if(line.transaction === "debit"){
             types.some((type) => type.name === line.type) 
             ? types.find((type) => type.name === line.type).value += parseInt(line.value) 
             : types.push({name: line.type, value: parseInt(line.value)});
         }
+      }
     }
 
     for(let type of types){
         graph.push({name: type.name, value: type.value});
     }
 
-    const handleChange = (e) => {
-      setMonth(e.target.value);
-    };
+    //this.setState({types:[]}); have to set this type state to zero or else it keeps adding the same values again
+    // see discord message for explaination
 
     const createGraph = () => {
       return (
