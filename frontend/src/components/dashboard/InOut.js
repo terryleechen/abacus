@@ -20,30 +20,47 @@ const InOut = ({data}) => {
   const [moneyOut, setMoneyOut] = useState(0);
   const [year, setYear] = useState("");
   const [dropDown, setDropDown] = useState([]);
+  const months = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
 
   //console.log(data);
 
   useEffect(() => {
-
-  }, [data])
-
-  var moneyInTemp = 0;
-  var moneyOutTemp = 0;
-  var graph = [];
-
-  if (data) {
-    for (let line of data) {
-      //console.log(line)
-      var numTemp = parseInt(line.value);
-      if (line.transaction === "credit") {
-        moneyInTemp += numTemp;
-      }
-      if (line.transaction === "debit") {
-        moneyOutTemp += numTemp;
+    const options = [];
+    for (let line of data){
+      const date = line.date;
+      const temp = date.substring(date.length - 4);
+      if(options.includes(temp) !== true){
+        options.push(temp);
       }
     }
-    graph.push({ name: "Income", value: moneyInTemp });
-    graph.push({ name: "Expenses", value: moneyOutTemp });
+    setDropDown(options)
+  }, [data])
+
+  
+  var graph = [];
+
+  if (data && year) {
+    for(let i=1;i<13;i++){
+      var moneyInTemp = 0;
+      var moneyOutTemp = 0;
+      for (let line of data) {
+        const month = line.date.split('/')[0];
+        const yearTemp = line.date.substring(line.date.length - 4);
+        if(parseInt(month) === i && yearTemp === year){
+          var numTemp = parseInt(line.value);
+          if (line.transaction === "credit") {
+            moneyInTemp += numTemp;
+          }
+          if (line.transaction === "debit") {
+            moneyOutTemp += numTemp;
+          }
+        }
+      }
+      if(moneyInTemp > 0 || moneyOutTemp > 0){
+        graph.push({ name: months[i-1], income: moneyInTemp, expense: moneyOutTemp});
+      }
+    }
+    //console.log(graph)
   }
 
   const handleChange = (e) => {
@@ -58,15 +75,17 @@ const InOut = ({data}) => {
           alignItems: "center",
           justifyContent: "center",
           paddingTop: "50px",
+
         }}
       >
-        <BarChart width={400} height={250} data={graph}>
+        <BarChart width={800} height={250} data={graph}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="income" fill="#8884d8" />
+          <Bar dataKey="expense" fill="#82ca9d" />
         </BarChart>
       </div>
     );
@@ -89,6 +108,7 @@ const InOut = ({data}) => {
             borderRadius: 5,
             boxShadow: 5,
             m: 2,
+            p:5
           }}
         >
         {(dropDown.length > 0) && <div>
@@ -99,15 +119,15 @@ const InOut = ({data}) => {
           label="Year"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {dropDown.map( (item) =>
+            <MenuItem key={item} value={item}>{item}</MenuItem>
+            )}
         </Select>
       </FormControl>
         </div>}
         <div style={{marginTop:"20px"}}>Monthly Cashflow</div>
 
-          {graph.length > 0 ? createGraph() : null}
+          {year && createGraph()}
         </Box>
       </div>
     </>
