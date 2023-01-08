@@ -23,10 +23,12 @@ const MostSpent = ({data}) => {
     var graph = [];
 
     useEffect(() => {
-      const options = [];
+    const options = [];
       for (let line of data){
         const date = line.date;
-        const temp = date.split("/")[0];
+        const tempM = date.split("/")[0];
+        const tempY = date.split("/")[2];
+        const temp = `${tempM}/${tempY}`;
         if(options.includes(temp) !== true){
           options.push(temp);
         }
@@ -34,6 +36,7 @@ const MostSpent = ({data}) => {
       setDropDown(options)
     }, [data])
 
+    
     for(let line of data){
         if(line.transaction === "debit"){
             types.some((type) => type.name === line.type) 
