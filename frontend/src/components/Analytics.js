@@ -47,13 +47,14 @@ const Analytics = () => {
             >
               Back
             </div>
-            <div style={{ 
+
+          </Link>
+          <div style={{ 
         textAlign: "left", 
         paddingTop: "130px",
         color: "#656b6e", 
         paddingLeft: "20px"}}>Disclaimer: Not Actual Financial Advice
         </div>
-          </Link>
         </div>
       </div>
     </div>
