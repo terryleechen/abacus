@@ -12,17 +12,7 @@ const Analytics = () => {
 
   return (
     <>
-      <div style={{backgroundColor: "#dceef7", height: "150vh"}}>
-      <div style={{
-          fontSize: 40,
-          color: "#204c63",
-          paddingTop: "15px",
-          paddingBottom: "5px",
-          paddingRight: "20px",
-          fontWeight: "800",
-        }}>
-          Analytics
-          </div>
+      <div>Analytics</div>
       <div
         style={{
           display: "flex",
@@ -39,24 +29,15 @@ const Analytics = () => {
                 marginTop: "40px",
                 padding: "10px",
                 border: "solid",
-                color: "#204c63",
-                fontWeight: "800",
                 borderRadius: "20px",
                 width: "60px",
               }}
             >
               Back
             </div>
-            <div style={{ 
-        textAlign: "left", 
-        paddingTop: "130px",
-        color: "#656b6e", 
-        paddingLeft: "20px"}}>Disclaimer: Not Actual Financial Advice
-        </div>
           </Link>
         </div>
       </div>
-    </div>
     </>
   );
 };
