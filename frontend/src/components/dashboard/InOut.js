@@ -11,13 +11,16 @@ import {
   Bar,
 } from "recharts";
 
-const InOut = () => {
+const InOut = ({data}) => {
   const [moneyIn, setMoneyIn] = useState(0);
   const [moneyOut, setMoneyOut] = useState(0);
+  const [year, setYear] = useState("");
 
-  const location = useLocation();
-  const { data } = location.state;
   //console.log(data);
+
+  useEffect(() => {
+
+  }, [data])
 
   var moneyInTemp = 0;
   var moneyOutTemp = 0;
@@ -38,9 +41,34 @@ const InOut = () => {
     graph.push({ name: "Expenses", value: moneyOutTemp });
   }
 
+  const handleChange = (e) => {
+    setYear(e.target.value);
+  };
+
+  const createGraph = () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: "50px",
+        }}
+      >
+        <BarChart width={400} height={250} data={graph}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#8884d8" />
+        </BarChart>
+      </div>
+    );
+  };
+
   return (
     <>
-      <div>InOut</div>
       <div
         style={{
           display: "flex",
@@ -58,39 +86,9 @@ const InOut = () => {
             m: 2,
           }}
         >
-          {graph.length > 0 ? (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                paddingTop: "50px",
-              }}
-            >
-              <BarChart width={400} height={250} data={graph}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="value" fill="#8884d8" />
-              </BarChart>
-            </div>
-          ) : null}
-
-          <Link to="/">
-            <div
-              style={{
-                marginTop: "40px",
-                padding: "10px",
-                border: "solid",
-                borderRadius: "20px",
-                width: "60px",
-              }}
-            >
-              Back
-            </div>
-          </Link>
+        <div style={{marginTop:"20px"}}>Monthly Cashflow</div>
+        
+          {graph.length > 0 ? createGraph() : null}
         </Box>
       </div>
     </>
