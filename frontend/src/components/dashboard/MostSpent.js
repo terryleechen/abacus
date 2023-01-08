@@ -23,7 +23,10 @@ const MostSpent = ({data}) => {
             ? types.find((type) => type.name === line.type).value += parseInt(line.value) 
             : types.push({name: line.type, value: parseInt(line.value)});
         }
-        graph.push({name: line.type, value: parseInt(line.value)});
+    }
+
+    for(let type of types){
+        graph.push({name: type.name, value: type.value});
     }
 
 

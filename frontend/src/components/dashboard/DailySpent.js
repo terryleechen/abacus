@@ -12,14 +12,7 @@ import {
 } from "recharts";
 
 const DailySpent = ({data}) => {
-
-  //console.log(data);
-
-  //const current = new Date();
-  //console.log(current);
-  //const date = current.getMonth()+1;
-  //console.log(date);
-
+  const [sixMonths, setSixMonths] = useState([]);
 
   var month1 = 0;
   var day = 0;
@@ -39,13 +32,14 @@ const DailySpent = ({data}) => {
         if (line.transaction === "debit")
         {
             var date = line.date.split("/");
-            console.log(date);
             if (graph.includes(date[1]))
             {
                 console.log("hello");
             }
-            else{
-                graph.push({day: date[1], month1: date[0]})
+            else {
+
+
+      
             }
         }
       }
