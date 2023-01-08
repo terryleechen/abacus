@@ -44,11 +44,13 @@ const Dashboard = () => {
 
   return (
     <>
+      <div style={{backgroundColor: "#dceef7", height: "100vh"}}>
       <div style={{
-          fontSize: 20,
+          fontSize: 40,
           color: "#204c63",
-          paddingTop: "25px",
-          paddingBottom: "10px"
+          paddingTop: "15px",
+          paddingBottom: "5px",
+          paddingRight: "20px"
         }}>
           Dashboard
       </div>
@@ -105,6 +107,13 @@ const Dashboard = () => {
           </div>
         </Box>
       </div>
+      <div style={{ 
+        textAlign: "left", 
+        paddingTop: "55vh",
+        color: "#656b6e", 
+        paddingLeft: "20px"}}>Disclaimer: Not Actual Financial Advice
+        </div>
+    </div>
     </>
   );
 };
