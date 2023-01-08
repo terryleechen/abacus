@@ -44,11 +44,14 @@ const Dashboard = () => {
 
   return (
     <>
+      <div style={{backgroundColor: "#dceef7", height: "100vh"}}>
       <div style={{
-          fontSize: 20,
+          fontSize: 40,
           color: "#204c63",
-          paddingTop: "25px",
-          paddingBottom: "10px"
+          paddingTop: "15px",
+          paddingBottom: "5px",
+          paddingRight: "20px",
+          fontWeight: "800",
         }}>
           Dashboard
       </div>
@@ -72,9 +75,9 @@ const Dashboard = () => {
           <div style={{ textAlign: "left", padding: "20px" }}>
 
             <div style={{ 
-              paddingBottom: "20px",
-              fontSize: 18,
-              fontStyle: "bold",
+              paddingBottom: "10px",
+              fontSize: 24,
+              fontWeight: "800",
               color: "#FFF"
             }}>Overview</div>
 
@@ -83,7 +86,7 @@ const Dashboard = () => {
             <div style={{ padding: "2px", color: "#FFF"}}>Groceries</div>
             <div style={{ padding: "2px", color: "#FFF"}}>Utilities</div>
             <div style={{ padding: "2px", color: "#FFF"}}>Miscellaneous</div>
-            <div style={{ paddingTop: "20px", paddingBottom: "10px" }}>
+            <div style={{ paddingTop: "20px", paddingBottom: "10px" , color: "#FFF"}}>
               <input type="file" accept=".csv" onChange={onFileChange} />
               <button onClick={onFileUpload}>Upload!</button>
             </div>
@@ -91,20 +94,29 @@ const Dashboard = () => {
               <Link to="Analytics" state={{data: json}}>
                 <div
                   style={{
-                    marginTop: "40px",
+                    marginTop: "10px",
                     padding: "10px",
                     border: "solid",
+                    color: "#204c63",
+                    fontWeight: "800",
                     borderRadius: "20px",
-                    width: "60px",
+                    width: "90px",
                   }}
                 >
-                  Analytics
+                  ANALYTICS
                 </div>
               </Link>
             )}
           </div>
         </Box>
       </div>
+      <div style={{ 
+        textAlign: "left", 
+        paddingTop: "55vh",
+        color: "#656b6e", 
+        paddingLeft: "20px"}}>Disclaimer: Not Actual Financial Advice
+        </div>
+    </div>
     </>
   );
 };
