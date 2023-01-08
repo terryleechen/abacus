@@ -66,7 +66,7 @@ const MostSpent = ({data}) => {
                     paddingTop: "50px",
         }}>
 
-        <BarChart width={400} height={250} data={graph}>
+        <BarChart width={1000} height={250} data={graph}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
