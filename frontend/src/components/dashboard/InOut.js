@@ -87,8 +87,8 @@ const InOut = ({data}) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="income" fill="#8884d8" />
-          <Bar dataKey="expense" fill="#82ca9d" />
+          <Bar dataKey="income" fill="#204c63" />
+          <Bar dataKey="expense" fill="#1c1f21" />
         </BarChart>
       </div>
     );
@@ -128,7 +128,12 @@ const InOut = ({data}) => {
         </Select>
       </FormControl>
         </div>}
-        <div style={{marginTop:"20px"}}>Monthly Cashflow</div>
+        <div style={{
+              paddingBottom: "10px",
+              fontSize: 24,
+              fontWeight: "800",
+              color: "#FFF", 
+              marginTop:"20px"}}>Monthly Cashflow</div>
 
           {year && createGraph()}
 
