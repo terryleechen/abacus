@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router";
-import Dashboard from "./components/dashboard/Dashboard.js";
-import Analytics from "./components/Analytics";
+import Dashboard from "./components/Landing.js";
+import Analytics from "./components/dashboard/Dashboard.js";
 
 function App() {
 
