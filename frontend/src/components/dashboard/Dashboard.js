@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import InOut from "./InOut.js";
 import MostSpent from "./MostSpent.js";
+import DailySpent from "./DailySpent.js";
 
 const Analytics = () => {
 
@@ -33,6 +34,7 @@ const Analytics = () => {
         <div>
           <InOut data={data}/>
           <MostSpent data={data}/>
+          <DailySpent data={data}/>
           <Link to="/">
             <div
               style={{
