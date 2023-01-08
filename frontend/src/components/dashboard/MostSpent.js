@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import {
     BarChart,
     CartesianGrid,
@@ -13,9 +17,22 @@ import {
 
 const MostSpent = ({data}) => {
     const [types, setTypes] = useState([]);
+    const [month, setMonth] = useState("");
+    const [dropDown, setDropDown] = useState([]);
+    
     var graph = [];
 
-    useEffect(() => {}, [data]);
+    useEffect(() => {
+      const options = [];
+      for (let line of data){
+        const date = line.date;
+        const temp = date.split("/")[0];
+        if(options.includes(temp) !== true){
+          options.push(temp);
+        }
+      }
+      setDropDown(options)
+    }, [data])
 
     for(let line of data){
         if(line.transaction === "debit"){
@@ -29,6 +46,32 @@ const MostSpent = ({data}) => {
         graph.push({name: type.name, value: type.value});
     }
 
+    const handleChange = (e) => {
+      setMonth(e.target.value);
+    };
+
+    const createGraph = () => {
+      return (
+        <div
+          style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: "100px",
+              paddingRight: "100px",
+              paddingTop: "50px",
+        }}>
+
+        <BarChart width={1000} height={250} data={graph}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#204c63" />
+        </BarChart>
+        </div>
+      )};
 
     return (
         <>
@@ -49,6 +92,20 @@ const MostSpent = ({data}) => {
                 m: 2,
               }}
               >
+              {(dropDown.length > 0) && <div>
+              <FormControl fullWidth>
+              <InputLabel >Month</InputLabel>
+              <Select
+                value={month}
+                label="month"
+                onChange={handleChange}
+              >
+                {dropDown.map( (item) =>
+                  <MenuItem key={item} value={item}>{item}</MenuItem>
+                  )}
+              </Select>
+            </FormControl>
+            </div>}
             <div style={{
                   paddingTop: "20px",
                   paddingBottom: "10px",
@@ -56,27 +113,10 @@ const MostSpent = ({data}) => {
                   fontWeight: "800",
                   color: "#FFF"
                   }}>Category with Highest Spending</div>
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft: "100px",
-                    paddingRight: "100px",
-                    paddingTop: "50px",
-        }}>
+            
+            {month && createGraph()}
 
-        <BarChart width={1000} height={250} data={graph}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="value" fill="#204c63" />
-        </BarChart>
-        </div>
             </Box>
-
           </div>
         </>
       );
