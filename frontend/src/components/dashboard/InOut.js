@@ -28,7 +28,7 @@ const InOut = ({data}) => {
 
   if (data) {
     for (let line of data) {
-      console.log(line)
+      //console.log(line)
       var numTemp = parseInt(line.value);
       if (line.transaction === "credit") {
         moneyInTemp += numTemp;
